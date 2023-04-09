@@ -12,6 +12,9 @@
 Console.Clear();
 int arrayLenght = GetLenght("Введите длину массива: ","Ошибка ввода! Введите новое значение: ");
 string[] array = GetArray(arrayLenght);
+string[] arrayResult = GetResult(array);
+Console.WriteLine($"[{string.Join(",  ", array)}]");
+Console.WriteLine($"[{string.Join(",  ", arrayResult)}]");
 
 
 // Пользователь задает длинну массива
@@ -33,9 +36,22 @@ string[]GetArray(int arrayLenght)
     while(index < arrayLenght)
     {
         Console.Write($"Введите {index} элемент: ");
-        arr[index] = Console.ReadLine() ?? "Ошибка! введено null значение";
+        arr[index] = Console.ReadLine() ?? "";
         index++;
-        
     }
     return arr;
+}
+
+string[] GetResult(string[]array)
+{
+    string[] arrayResult = new string[array.Length];
+    for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length <= 3)
+        {
+            arrayResult[i] = array[i];
+        }
+
+    }
+    return arrayResult;
 }

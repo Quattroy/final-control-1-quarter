@@ -10,9 +10,10 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 Console.Clear();
-int arrayLenght = GetLenght("Введите длину массива: ","Ошибка ввода! Введите новое значение: ");
+int arrayLenght = GetLenght("Введите длину массива: ", "Ошибка ввода! Введите новое значение: ");
 string[] array = GetArray(arrayLenght);
-string[] arrayResult = GetResult(array);
+int newLenght = GetNewLenght(array);
+string[] arrayResult = GetResult(array, newLenght);
 Console.WriteLine($"[{string.Join(",  ", array)}]");
 Console.WriteLine($"[{string.Join(",  ", arrayResult)}]");
 
@@ -29,11 +30,11 @@ int GetLenght(string message, string error)
     }
 }
 // Формируем массив из введенных пользователем элементов
-string[]GetArray(int arrayLenght)
+string[] GetArray(int arrayLenght)
 {
-    string[]arr = new string[arrayLenght];
+    string[] arr = new string[arrayLenght];
     int index = 0;
-    while(index < arrayLenght)
+    while (index < arrayLenght)
     {
         Console.Write($"Введите {index} элемент: ");
         arr[index] = Console.ReadLine() ?? "";
@@ -42,16 +43,34 @@ string[]GetArray(int arrayLenght)
     return arr;
 }
 
-string[] GetResult(string[]array)
+/////////////////////////////ищем длину для нового массива
+int GetNewLenght(string[] array)
 {
-    string[] arrayResult = new string[array.Length];
-    for(int i = 0; i < array.Length; i++)
+    int lenght = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        if(array[i].Length <= 3)
+        if (array[i].Length <=3)
         {
-            arrayResult[i] = array[i];
+            lenght++;
         }
+    }
+    return lenght;
+}
 
+
+string[] GetResult(string[] array, int newLenght)
+{
+    string[] arrayResult = new string[newLenght];
+    int index = 0;
+    
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i].Length <= 3)
+            {
+                arrayResult[index] = array[i];
+                index++;
+            }
+        
     }
     return arrayResult;
 }

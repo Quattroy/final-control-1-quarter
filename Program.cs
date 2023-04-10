@@ -14,12 +14,11 @@ int arrayLenght = GetLenght("Введите длину массива: ", "Ош�
 string[] array = GetArray(arrayLenght);
 int newLenght = GetNewLenght(array);
 string[] arrayResult = GetResult(array, newLenght);
-Console.WriteLine($"[{string.Join(",  ", array)}]");
-Console.WriteLine($"[{string.Join(",  ", arrayResult)}]");
+Console.WriteLine($"[{string.Join(",  ", array)}] => [{string.Join(",  ", arrayResult)}]");
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Пользователь задает длинну массива
-int GetLenght(string message, string error)
+int GetLenght(string message, string error)// Пользователь задает длинну массива
 {
     while (true)
     {
@@ -29,8 +28,8 @@ int GetLenght(string message, string error)
         else Console.WriteLine(error);
     }
 }
-// Формируем массив из введенных пользователем элементов
-string[] GetArray(int arrayLenght)
+
+string[] GetArray(int arrayLenght) // Формируем массив из введенных пользователем элементов
 {
     string[] arr = new string[arrayLenght];
     int index = 0;
@@ -43,13 +42,12 @@ string[] GetArray(int arrayLenght)
     return arr;
 }
 
-/////////////////////////////ищем длину для нового массива
-int GetNewLenght(string[] array)
+int GetNewLenght(string[] array) //ищем длину для нового массива
 {
     int lenght = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <=3)
+        if (array[i].Length <= 3)
         {
             lenght++;
         }
@@ -62,15 +60,15 @@ string[] GetResult(string[] array, int newLenght)
 {
     string[] arrayResult = new string[newLenght];
     int index = 0;
-    
-        for (int i = 0; i < array.Length; i++)
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3)
         {
-            if (array[i].Length <= 3)
-            {
-                arrayResult[index] = array[i];
-                index++;
-            }
-        
+            arrayResult[index] = array[i];
+            index++;
+        }
+
     }
     return arrayResult;
 }

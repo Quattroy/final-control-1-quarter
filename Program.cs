@@ -55,11 +55,10 @@ int GetNewLenght(string[] array) //ищем длину для нового ма�
 }
 
 
-string[] GetResult(string[] array, int newLenght)
+string[] GetResult(string[] array, int newLenght)//формируем и заполняем новый массив, включая в него элементы длина которых меньше, либо равна 3 символам
 {
     string[] arrayResult = new string[newLenght];
     int index = 0;
-
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i].Length <= 3)
@@ -67,7 +66,6 @@ string[] GetResult(string[] array, int newLenght)
             arrayResult[index] = array[i];
             index++;
         }
-
     }
     return arrayResult;
 }
